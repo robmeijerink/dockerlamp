@@ -137,10 +137,10 @@ May differ for PHP Verions <7.x.x
 
 ## phpMyAdmin
 
-phpMyAdmin is configured to run on port 8080. Use following default credentials.
+phpMyAdmin is configured to run on port 8080. Use the following default credentials.
 
 http://localhost:8080/  
-username: root  
+username: docker  
 password: secret
 
 ## Redis
