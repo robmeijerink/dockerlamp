@@ -14,7 +14,7 @@
                         DockerLAMP
                     </h1>
                     <h2 class="subtitle">
-                        Building new things never gets old
+                        Creativity starts here
                     </h2>
                 </div>
             </div>

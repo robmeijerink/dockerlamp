@@ -21,8 +21,8 @@ As of now, we have several different PHP versions. Use the php version you need:
 ##  Installation
  
 * Clone this repository on your local computer
-* configure .env as needed 
-* Run the `docker-compose up -d`.
+* configure the `.env` as needed 
+* Run `docker-compose up -d`.
 
 ```shell
 cp .env.example .env
@@ -36,23 +36,23 @@ Your LAMP stack is now ready!! You can access it via `http://localhost` or the a
 ##  Configuration and Usage
 
 ### General Information 
-This Docker Stack is build for local development and not for production usage.
+This Docker Stack is built for local development and not for production usage.
 
 ### Configuration
-This package comes with default configuration options. You can modify them by creating `.env` file in your root directory.
-To make it easy, just copy the content from `.env.example` file and update the environment variable values to your needs.
+This package comes with default configuration options. You can modify them by creating the `.env` file in your root directory.
+To make it easy, just copy the `.env.example` file and update the environment variable values to your needs.
 
 ### Configuration Variables
-There are following configuration variables available and you can customize them by overwritting in your own `.env` file.
+Configuration values can be overwritten in your own `.env` file.
 
 ---
 ### PHP
 
 _**PHPVERSION**_
-Is used to specify which PHP Version you want to use. Defaults always to latest PHP Version. 
+Is used to specify which PHP version you want to use. Defaults to the latest PHP version. 
 
 _**PHP_INI**_
-Define your custom `php.ini` modification to meet your requirments. 
+Define your custom `php.ini` modification to meet your requirements. 
 
 ---
 ### Apache 
@@ -60,7 +60,7 @@ Define your custom `php.ini` modification to meet your requirments.
 
 _**DOCUMENT_ROOT**_
 
-It is a document root for Apache server. The default value for this is `./www`. All your sites will go here and will be synced automatically.
+This is the document root for the Apache server. The default value for this is `./www`. All your sites will go here and will be synced automatically.
 
 _**VHOSTS_DIR**_
 
@@ -77,11 +77,8 @@ This will be used to store Apache logs. The default value for this is `./logs/ap
 
 
 _**DATABASE**_
-Define which MySQL or MariaDB Version you would like to use. 
 
-_**MYSQL_DATA_DIR**_
-
-This is MySQL data directory. The default value for this is `./data/mysql`. All your MySQL data files will be stored here.
+Define which MySQL or MariaDB version you would like to use. 
 
 _**MYSQL_LOG_DIR**_
 
@@ -93,17 +90,17 @@ Apache is configured to run on port 80. So, you can access it via `http://localh
 
 ### Apache Modules
 
-By default following modules are enabled.
+By default the following modules are enabled:
 
 * rewrite
 * headers
 
-> If you want to enable more modules, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge if seems good for general purpose.
+> If you want to enable more modules, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge it if it seems good for general purposes.
 > You have to rebuild the docker image by running `docker-compose build` and restart the docker containers.
 
 ### Connect via SSH
 
-You can connect to web server using `docker-compose exec` command to perform various operation on it. Use below command to login to container via ssh.
+You can connect to the web server using the `docker-compose exec` command to perform various operation on it. Use the command below to login to the container via SSH:
 
 ```shell
 docker-compose exec webserver bash
@@ -111,12 +108,12 @@ docker-compose exec webserver bash
 
 ## PHP
 
-The installed version of depends on your `.env`file. 
+The installed version of PHP depends on your `.env`file. 
 
 #### Extensions
 
-By default following extensions are installed. 
-May differ for PHP Verions <7.x.x
+By default the following extensions are installed. 
+May differ for older PHP versions <7.x.x
 
 * mysqli
 * pdo_sqlite
@@ -132,14 +129,14 @@ May differ for PHP Verions <7.x.x
 * xmlrpc
 * gd
 
-> If you want to install more extension, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge if it seems good for general purpose.
+> If you want to install more extensions, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge it if it seems good for general purposes.
 > You have to rebuild the docker image by running `docker-compose build` and restart the docker containers.
 
 ## phpMyAdmin
 
-phpMyAdmin is configured to run on port 8080. Use the following default credentials.
+phpMyAdmin is configured to run on port 8080 by default. You can change this in your `.env` file by changing the `HOST_MACHINE_PMA_PORT` configuration value. Use the following default credentials:
 
-http://localhost:8080/  
+http://localhost:8080
 username: docker  
 password: secret
 
@@ -149,11 +146,22 @@ It comes with Redis. It runs on default port `6379`.
 
 ## MailHog
 
-Catch your outgoing mail with MailHog. Access your mailbox at http://localhost:8025/.
+Easily catch your application's outgoing mail with MailHog. Access your mailbox at http://localhost:8025.
+
+Use these configuration values in your application to use MailHog:
+
+```
+ MAIL_DRIVER=smtp
+ MAIL_HOST=0.0.0.0
+ MAIL_PORT=1025
+ MAIL_USERNAME=
+ MAIL_PASSWORD=
+ MAIL_ENCRYPTION=null
+ ```
 
 ## Why you shouldn't use this stack unmodified in production
-We want to empower developers to quickly create creative Applications. Therefore we are providing an easy to set up a local development environment for several different Frameworks and PHP Versions. 
-In Production you should modify at a minimum the following subjects:
+We want to empower developers to quickly create creative Applications. Therefore we are providing an easy to set up a local development environment for several different frameworks and PHP versions. 
+In Production you should modify the following subjects at a minimum:
 
 * php handler: mod_php=> php-fpm
 * secure mysql users with proper source IP limitations
