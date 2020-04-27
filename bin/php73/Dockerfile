@@ -52,5 +52,8 @@ RUN apt-get -y update && \
 # Enable apache modules
 RUN a2enmod rewrite headers
 
+# Enable custom virtual host configuration
+RUN echo 'Include /etc/apache2/sites-available/*.conf' > '/etc/apache2/sites-enabled/vhost.conf'
+
 # Cleanup
 RUN rm -rf /usr/src/*

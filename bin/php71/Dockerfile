@@ -44,3 +44,6 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 # Enable apache modules
 RUN a2enmod rewrite headers
+
+# Enable custom virtual host configuration
+RUN echo 'Include /etc/apache2/sites-available/*.conf' > '/etc/apache2/sites-enabled/vhost.conf'

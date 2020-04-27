@@ -33,4 +33,7 @@ RUN a2enmod rewrite headers
 
 EXPOSE 80
 
+# Enable custom virtual host configuration
+RUN echo 'Include /etc/apache2/sites-available/*.conf' > '/etc/apache2/sites-enabled/vhost.conf'
+
 ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
