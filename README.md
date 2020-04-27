@@ -2,9 +2,10 @@
 
 A basic LAMP stack environment built using Docker Compose. It consists of the following:
 
-* PHP
+* Debian GNU / Linux 10 (buster)
 * Apache
-* MySQL
+* MySQL / MariaDB
+* PHP
 * phpMyAdmin
 * Redis
 * MailHog
