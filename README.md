@@ -175,6 +175,11 @@ Docker Sync improves loading times in your browser signficantly. Run these comma
 
 `./sync.sh down`
 
+
+#### SSH to workspace
+
+`./sync.sh bash`
+
 ## Why you shouldn't use this stack unmodified in production
 We want to empower developers to quickly create creative Applications. Therefore we are providing an easy to set up a local development environment for several different frameworks and PHP versions. 
 In Production you should modify the following subjects at a minimum:

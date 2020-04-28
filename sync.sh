@@ -69,7 +69,7 @@ elif [ "$1" == "down" ]; then
     docker-sync stop
 
 elif [ "$1" == "bash" ]; then
-    docker-compose exec --user=laradock workspace bash
+    docker-compose exec --user=docker workspace bash
 
 elif [ "$1" == "install" ]; then
     print_style "Installing docker-sync\n" "info"
