@@ -160,6 +160,21 @@ Use these configuration values in your application to use MailHog:
  MAIL_ENCRYPTION=null
  ```
 
+## Docker Sync
+
+Docker Sync improves loading times in your browser signficantly. Run these commands to use Docker Sync:
+
+#### Install
+`./sync.sh install`
+
+#### Start
+
+`./sync.sh up`
+
+#### Stop
+
+`./sync.sh down`
+
 ## Why you shouldn't use this stack unmodified in production
 We want to empower developers to quickly create creative Applications. Therefore we are providing an easy to set up a local development environment for several different frameworks and PHP versions. 
 In Production you should modify the following subjects at a minimum:

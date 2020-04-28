@@ -1,8 +1,10 @@
 version: '3.8'
 
 services:
+  webserver:
+    volumes:
+      - applications-docker-sync:/var/www/html:nocopy
 
 volumes:
-  applications-sync:
-    external:
-      name: "applications-docker-sync"
+  applications-docker-sync:
+    external: true
