@@ -22,14 +22,17 @@ As of now, we have several different PHP versions. Use the php version you need:
 ##  Installation
  
 * Clone this repository on your local computer
-* configure the `.env` as needed 
-* Run `docker-compose up -d`.
+* configure the `.env` as needed
+* Run `./sync.sh install && ./sync.sh up`
+* OR: If you don't need Docker Sync: Simply run `docker-compose up -d`.
+
+Example:
 
 ```shell
 cp .env.example .env
 // modify .env as needed
-docker-compose up -d
-// visit your machine's IP Address
+./sync.sh install
+./sync.sh up
 ```
 
 Your LAMP stack is now ready!! You can access it via `http://localhost` or the address of your Docker machine (for example: `http://192.168.99.100`). You can configure this location in the `.env` file with `HOST_MACHINE_IP_ADDRESS`.
