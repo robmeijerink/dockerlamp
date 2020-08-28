@@ -10,10 +10,10 @@ RUN printf "deb http://archive.debian.org/debian/ jessie main\n" > /etc/apt/sour
     printf "deb http://security.debian.org jessie/updates main\n" >>  /etc/apt/sources.list && \
     printf "deb-src http://security.debian.org jessie/updates main" >>  /etc/apt/sources.list
 
-RUN apt-get -y update && apt-get upgrade -y
+RUN apt-get -y --allow-unauthenticated update && apt-get upgrade -y --allow-unauthenticated
 
 # Install tools && libraries
-RUN apt-get -y install --fix-missing apt-utils nano wget dialog \
+RUN apt-get -y --allow-unauthenticated install --fix-missing apt-utils nano wget dialog \
     build-essential git curl libcurl3 libcurl3-dev zip \
     libmcrypt-dev libsqlite3-dev libsqlite3-0 mysql-client \
     zlib1g-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
@@ -37,7 +37,7 @@ RUN docker-php-ext-install curl \
     && docker-php-ext-install mbstring
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install gd 
+    && docker-php-ext-install gd
 
 RUN pecl install xdebug-2.4.0RC4 && docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini
@@ -49,11 +49,7 @@ RUN a2enmod rewrite rpaf
 
 EXPOSE 80
 
-# Enable custom virtual host configuration
-RUN echo 'Include /etc/apache2/sites-available/*.conf' > '/etc/apache2/sites-enabled/vhost.conf'
-
 ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
 
 # WORKSPACE CONFIGURATION
 
